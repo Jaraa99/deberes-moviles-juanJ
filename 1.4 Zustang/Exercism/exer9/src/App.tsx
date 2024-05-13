@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+function DnDCharacter() {
+  const strength = generateAbilityScore();
+  const dexterity = generateAbilityScore();
+  const constitution = generateAbilityScore();
+  const intelligence = generateAbilityScore();
+  const wisdom = generateAbilityScore();
+  const charisma = generateAbilityScore();
+  const hitpoints = 10 + getModifierFor(constitution);
+
+  function rollDice(): number {
+    return Math.floor(Math.random() * (6 - 1) + 1);
+  }
+
+  function findLowest(numbers: number[]): number {
+    return numbers.reduce((final, current) =>
+      final >= current ? current : final
+    );
+  }
+
+  function generateAbilityScore(): number {
+    let dicesRolls: number[] = [];
+    for (let i = 0; i < 4; i++) {
+      dicesRolls.push(rollDice());
+    }
+    let lowest = findLowest(dicesRolls);
+    dicesRolls.splice(dicesRolls.indexOf(lowest), 1);
+    return dicesRolls.reduce((final, current) => final + current);
+  }
+
+  function getModifierFor(abilityValue: number): number {
+    return Math.floor((abilityValue - 10) / 2);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h2>DnD Character</h2>
+      <p>Strength: {strength}</p>
+      <p>Dexterity: {dexterity}</p>
+      <p>Constitution: {constitution}</p>
+      <p>Intelligence: {intelligence}</p>
+      <p>Wisdom: {wisdom}</p>
+      <p>Charisma: {charisma}</p>
+      <p>Hitpoints: {hitpoints}</p>
+    </div>
+  );
 }
 
-export default App
+export default DnDCharacter;
