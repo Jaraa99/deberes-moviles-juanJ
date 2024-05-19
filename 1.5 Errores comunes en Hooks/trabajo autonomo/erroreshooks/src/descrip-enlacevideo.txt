@@ -1,0 +1,206 @@
+Errores de los Hooks en React
+``Nombre : Juan Carlos Jara` 
+`Curso: 3 nivel` 
+`Materia: Aplicaciones Móviles`
+
+ 1. No entender la regla de los Hooks
+
+Error: Llamar a un Hook dentro de una condición o un bucle.
+
+Ejemplo:
+
+
+`function MyComponent() {   if (someCondition) {     const [state, setState] = useState(0);    }   return <div>Hola</div>; }`
+
+Explicación:Los Hooks deben ser llamados en el mismo orden en cada renderizado. Si se colocan dentro de una condición, su orden puede cambiar, lo que puede causar errores.
+
+Correcto:
+
+
+
+`function MyComponent() {   const [state, setState] = useState(0); // Correcto: Hooks en la raíz del componente.   if (someCondition) {       }   return <div>Hola</div>; }`
+
+Explicación: Aquí, `useState` se llama en la raíz del componente, asegurando que siempre se llame en el mismo orden.
+
+ 2. Usar el estado incorrectamente
+
+Error: Modificar el estado directamente.
+
+Ejemplo:
+
+
+
+`function MyComponent() {   const [count, setCount] = useState(0);   count = 5;    return <div>{count}</div>; }`
+
+Explicación: React utiliza una función (`setCount`) para actualizar el estado. Modificar el estado directamente no actualizará el componente.
+
+Correcto:
+
+
+
+`function MyComponent() {   const [count, setCount] = useState(0);   setCount(5);   return <div>{count}</div>; }`
+
+Explicación: `setCount(5)` actualiza el estado y hace que el componente se vuelva a renderizar con el nuevo valor de `count`.
+
+ 3. No mantener el estado con objetos correctamente
+
+Error: No copiar el estado previo al actualizarlo.
+
+Ejemplo:
+
+
+
+``function MyComponent() {   const [user, setUser] = useState({ name: 'Alice', age: 25 });   const updateAge = () => {     setUser({ age: 26 });
+`name`.   };   return <div>{user.name}, {user.age}</div>; }``
+
+Explicación: Al actualizar el estado con un objeto nuevo sin incluir el estado anterior, se pierden las propiedades no mencionadas.
+
+Correcto:
+
+
+
+``function MyComponent() {   const [user, setUser] = useState({ name: 'Alice', age: 25 });   const updateAge = () => {     setUser(prevUser => ({ ...prevUser, age: 26 }));  `name`.   };   return <div>{user.name}, {user.age}</div>; }``
+
+Explicación:Usar el operador spread (`...prevUser`) copia todas las propiedades del estado anterior antes de actualizar `age`.
+
+ 4. Falta de dependencia en useEffect
+
+Error: No proporcionar una lista de dependencias.
+
+Ejemplo:
+
+
+
+`useEffect(() => {   console.log('Efecto sin dependencias');  });`
+
+Explicación: Sin dependencias, `useEffect` se ejecuta en cada renderizado, lo que puede ser ineficiente.
+
+Correcto:
+
+
+
+`useEffect(() => {   console.log('Efecto con dependencias');  }, [count]);`
+
+Explicación:Proporcionar `[count]` como dependencias hace que `useEffect` se ejecute solo cuando `count` cambia.
+
+
+5. Dependencia innecesaria en useEffect
+
+Error: Incluir funciones como dependencia cuando no es necesario.
+
+Ejemplo:
+
+
+
+`const logEffect = () => {   console.log('Efecto'); }; useEffect(() => {   logEffect(); }, [logEffect]); /`
+
+Explicación: Incluir `logEffect` en la lista de dependencias puede hacer que `useEffect` se ejecute innecesariamente si `logEffect` cambia.
+
+Correcto:
+
+
+
+`useEffect(() => {   const logEffect = () => {     console.log('Efecto');   };   logEffect(); }, []); 
+
+Explicación:Definir `logEffect` dentro de `useEffect` y proporcionar una lista de dependencias vacía asegura que solo se ejecuta una vez.
+
+6. Olvidar limpiar los efectos
+
+Error: No limpiar efectos que necesitan ser limpiados.
+
+Ejemplo:
+
+
+
+`useEffect(() => {   const interval = setInterval(() => {     console.log('Intervalo');   }, 1000); }, []); 
+
+Explicación: Los intervalos y otros efectos que deben ser limpiados pueden seguir corriendo incluso si el componente se desmonta.
+
+Correcto:
+
+
+`useEffect(() => {   const interval = setInterval(() => {     console.log('Intervalo');   }, 1000);   return () => clearInterval(interval);  }, []);`
+
+Explicación: La función de limpieza (`return () => clearInterval(interval)`) asegura que el intervalo se limpia cuando el componente se desmonta.
+
+7. No manejar el estado derivado correctamente
+
+Error: No calcular el estado derivado dentro de un useEffect.
+
+Ejemplo:
+
+
+`function MyComponent({ items }) {   const [total, setTotal] = useState(0);   setTotal(items.length);  return <div>{total}</div>; }`
+
+Explicación: Llamar `setTotal` directamente dentro del cuerpo del componente causa que se vuelva a renderizar infinitamente.
+
+Correcto:
+
+
+
+`function MyComponent({ items }) {   const [total, setTotal] = useState(0);   useEffect(() => {     setTotal(items.length);    }, [items]);   return <div>{total}</div>; }`
+
+Explicación: `useEffect` se usa para actualizar `total` cuando `items` cambia, evitando renderizados infinitos.
+
+8. No manejar bien el estado asincrónico
+
+Error: No manejar correctamente el estado asincrónico en useEffect.
+
+Ejemplo:
+
+
+
+`useEffect(() => {   async function fetchData() {     const response = await fetch('/api/data');     setData(response.data);   }   fetchData(); }, []);`
+
+Explicación: Si el componente se desmonta antes de que la petición se complete, puede intentar actualizar el estado en un componente desmontado.
+
+Correcto:
+
+
+
+`useEffect(() => {   let isMounted = true;   async function fetchData() {     const response = await fetch('/api/data');     if (isMounted) {       setData(response.data);      }   }   fetchData();   return () => { isMounted = false; }; }, []);`
+
+Explicación: La variable `isMounted` asegura que el estado solo se actualiza si el componente está aún montado.
+
+ 9. Usar useMemo/useCallback incorrectamente
+
+Error: No usar correctamente las dependencias.
+
+Ejemplo:
+
+
+
+``const memoizedValue = useMemo(() => computeExpensiveValue(a, b), []); `a` o `b`.``
+
+Explicación: Sin dependencias, `useMemo` no recalcula el valor cuando `a` o `b` cambian.
+
+Correcto:
+
+
+``const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]); `a` o `b`.``
+
+Explicación: Proporcionar `[a, b]` como dependencias asegura que `useMemo` recalcula `memoizedValue` cuando `a` o `b` cambian.
+
+10. No optimizar componentes con React.memo
+
+Error: No usar React.memo para componentes funcionales que no necesitan re-renderizados frecuentes.
+
+Ejemplo:
+
+
+
+`function ChildComponent({ prop }) {   console.log('Renderizando');   return <div>{prop}</div>; }`
+
+Explicación:Sin `React.memo`, `ChildComponent` se renderiza cada vez que el padre se renderiza, incluso si `prop` no ha cambiado.
+
+Correcto:
+
+`const ChildComponent = React.memo(function ChildComponent({ prop }) {   console.log('Renderizando');   return <div>{prop}</div>; });`
+
+
+Explicación: `React.memo` memoriza el componente, evitando renderizados innecesarios si `prop` no ha cambiado.
+
+
+ENLACE VIDEO 
+https://youtu.be/SwS9NLcCEbQ
+
