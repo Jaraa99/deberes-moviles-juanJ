@@ -1,0 +1,73 @@
+Ejercicios 10 
+
+
+1.Importación de React y uso del Hook useState:
+    
+    
+    
+    `import React, { useState } from 'react';`
+    
+    Se importa React y el hook `useState`, que permite a los componentes funcionales de React tener un estado.
+    
+2. Función `calculateScore`:
+    
+    
+    `const calculateScore = (x: number, y: number) => {   const dist = Math.sqrt(x * x + y * y);   if (dist <= 1) return 10;   if (dist <= 5) return 5;   if (dist <= 10) return 1;   return 0; };`
+    
+    Esta función toma las coordenadas 𝑥x y 𝑦y, calcula la distancia desde el origen usando la fórmula de la distancia euclidiana 𝑥2+𝑦2x2+y2​, y devuelve un puntaje basado en esa distancia:
+    
+    - Si la distancia es menor o igual a 1, el puntaje es 10.
+    - Si la distancia es menor o igual a 5, el puntaje es 5.
+    - Si la distancia es menor o igual a 10, el puntaje es 1.
+    - Si la distancia es mayor a 10, el puntaje es 0.
+3. Componente `App`:
+    
+    
+    
+    `const App = () => {   const [x, setX] = useState('');   const [y, setY] = useState('');   const [score, setScore] = useState(null);`
+    
+    El componente `App` usa el hook `useState` para manejar tres estados:
+    
+    - `x`: para el valor de la coordenada 𝑥x.
+    - `y`: para el valor de la coordenada 𝑦y.
+    - `score`: para almacenar el puntaje calculado.
+4. Manejo de cambios en las entradas:
+    
+    
+    
+      `const handleXChange = (e: { target: { value: React.SetStateAction<string>; }; }) => setX(e.target.value);   const handleYChange = (e: { target: { value: React.SetStateAction<string>; }; }) => setY(e.target.value);`
+    
+    Estas funciones se llaman cuando cambia el valor de las entradas de 𝑥x e 𝑦y, actualizando los estados correspondientes.
+    
+5. Función para calcular el puntaje:
+    
+    
+    
+      `const handleCalculateScore = () => {     const xNum = parseFloat(x);     const yNum = parseFloat(y);     if (!isNaN(xNum) && !isNaN(yNum)) {       const newScore = calculateScore(xNum, yNum);       setScore(newScore);     } else {       alert('Please enter valid numbers for both X and Y.');     }   };`
+    
+    Esta función se llama al hacer clic en el botón de calcular. Convierte los valores de 𝑥x e 𝑦y a números flotantes, verifica si son números válidos, calcula el puntaje usando `calculateScore` y actualiza el estado del puntaje. Si los valores no son válidos, muestra una alerta.
+    
+6. Renderizado del componente:
+    
+    
+      `return (     <div style={{ textAlign: 'center', marginTop: '50px' }}>       <h1>Score Calculator</h1>       <div style={{ marginBottom: '20px' }}>         <label>           X:           <input type="number" value={x} onChange={handleXChange} style={{ marginLeft: '10px', marginRight: '20px' }} />         </label>         <label>           Y:           <input type="number" value={y} onChange={handleYChange} style={{ marginLeft: '10px' }} />         </label>       </div>       <button onClick={handleCalculateScore} style={{ padding: '10px 20px' }}>         Calculate Score       </button>       {score !== null && (         <div style={{ marginTop: '20px' }}>           <h2>Your Score: {score}</h2>         </div>       )}     </div>   ); };`
+    
+    El método `return` define el JSX que se renderiza en la pantalla:
+    
+    - Un contenedor principal con estilo centrado y un margen superior.
+    - Un título "Score Calculator".
+    - Dos etiquetas `label` con entradas para las coordenadas 𝑥x e 𝑦y.
+    - Un botón que llama a `handleCalculateScore` al hacer clic.
+    - Una sección condicional que muestra el puntaje calculado si no es `null`.
+7. Exportación del componente `App`:
+    
+    
+    
+    `export default App;`
+    
+    Esto permite que el componente `App` se use en otras partes de la aplicación.
+
+
+    ENLACE VIDEO
+https://www.youtube.com/watch?v=TZqthxWk1Mw
+    

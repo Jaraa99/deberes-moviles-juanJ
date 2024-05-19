@@ -1,0 +1,61 @@
+
+   1. Importación de React y uso del Hook useState:
+    
+    
+    
+    `import React, { useState } from 'react';`
+    
+    Se importa React y el hook `useState` para manejar el estado del componente funcional.
+    
+-2. Función `isPangram`:
+    
+    
+    
+    `const isPangram = (paragraph: string) => {   return new Set(paragraph.toLowerCase().replace(/[^a-z]/g, '')).size === 26; };`
+    
+    Esta función toma un párrafo como entrada, lo convierte a minúsculas, elimina todos los caracteres que no sean letras, luego crea un conjunto (Set) de las letras presentes en el párrafo y verifica si el tamaño del conjunto es igual a 26 (la cantidad de letras en el alfabeto inglés). Si es así, el texto es un pangrama.
+    
+- 3.Componente `App`:
+    
+   
+    
+    `const App = () => {   const [text, setText] = useState('');   const [isPangramResult, setIsPangramResult] = useState(null);`
+    
+    El componente `App` utiliza el hook `useState` para mantener dos estados:
+    
+    - `text`: Para almacenar el texto ingresado por el usuario.
+    - `isPangramResult`: Para almacenar el resultado de la verificación de pangrama.
+
+- 4.Manejo de cambios en el texto:
+    
+    
+    
+      `const handleTextChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {     setText(e.target.value);   };`
+    
+    Esta función se llama cuando cambia el texto en el campo de entrada, actualizando el estado `text` con el nuevo valor.
+    
+- 5.Función para verificar el pangrama:
+    
+    
+      `const handleCheckPangram = () => {     const result = isPangram(text);     setIsPangramResult(result);   };`
+    
+    Esta función se llama cuando el usuario hace clic en el botón de verificación de pangrama. Utiliza la función `isPangram` para verificar si el texto ingresado es un pangrama y actualiza el estado `isPangramResult` con el resultado.
+    
+- 6.Renderizado del componente:
+    
+    
+      `return (     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>       <h1>Pangram Checker</h1>       <input         type="text"         value={text}         onChange={handleTextChange}         placeholder="Enter a sentence..."         style={{ padding: '10px', width: '300px', marginBottom: '20px' }}       />       <button onClick={handleCheckPangram} style={{ padding: '10px 20px' }}>         Check Pangram       </button>       {isPangramResult !== null && (         <div style={{ marginTop: '20px' }}>           <h2>{isPangramResult ? 'The text is a pangram!' : 'The text is not a pangram.'}</h2>         </div>       )}     </div>   ); };`
+    
+    - El JSX renderizado contiene un título "Pangram Checker", un campo de entrada de texto para que el usuario ingrese la oración, un botón para verificar si es un pangrama y un mensaje que indica si el texto es un pangrama o no, dependiendo del estado de `isPangramResult`.
+- 7. Exportación del componente `App`:
+    
+    
+    
+    `export default App;`
+    
+    Esto permite que el componente `App` sea utilizado en otras partes de la aplicación.
+
+
+
+      ENLACE VIDEO
+      https://www.youtube.com/watch?v=TZqthxWk1Mw
