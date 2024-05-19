@@ -1,0 +1,52 @@
+[
+  {
+    "id":"1",
+    "nombre": "Scream",
+    "genero":"Horror",
+    "duracion":"180",
+    "descripcion":"Estrenada en los estados unidos el 20 de diciembre de 1996, Scream sigue al personaje Sidney Prescott (Campbell), una estudiante del pueblo ficticio Woodsboro, quien se convierte en el blanco de un misterioso asesino conocido como Ghostface.",
+    "imagen": "https://es.web.img2.acsta.net/medias/nmedia/18/91/25/74/20136749.jpg",
+    "fecha": "20-12-1996",
+    "tipo":"pelicula"
+  },
+  {
+    "id":"2",
+    "genero":"Ficcion",
+    "duracion":"2h 4m",
+    "descripcion":"Un parque temático de dinosaurios busca atraer turistas con una emocionante exhibición, pero su criatura más temible logra escapar y desata el caos en la islas",
+    "imagen": "https://d5ip5p2ldkpmf.cloudfront.net/cinema/DB_Photos/MoviePosters/AllMADPhotos/10815284/10815284_v1_cmd1.jpg",
+    "fecha": "2018-05-21",
+    "nombre": "Jurassic World: Mundo Jurásico",
+    "tipo":"pelicula"
+  },
+  {
+    "id":"3",
+    "genero":"Horror",
+    "duracion":"1h 32m",
+    "descripcion":"Tarot es una película de terror estadounidense escrita y dirigida por Spenser Cohen y Anna Halberg y también coescrita por Nicholas Adams, basada en la novela Horrorscope de 1992 de Nicholas Adams. La película está protagonizada por Harriet Slater y Jacob Batalon",
+    "imagen": "https://www.lavanguardia.com/andro4all/hero/2024/01/tarot.1706695377.8112.jpg?width=768&aspect_ratio=16:9&format=nowebp",
+    "fecha": "2024-03-05",
+    "nombre": "Tarot de la muerte",
+    "tipo":"pelicula"
+  },
+  {
+    "id":"4",
+    "genero":"Comedia",
+    "duracion":"1h 44m.",
+    "descripcion":"EL GRINCH es la historia de un Grinch que odia la Navidad e intenta robársela a los Who, amantes de la Navidad, llevándose todos sus regalos y decoraciones",
+    "imagen": "https://es.web.img3.acsta.net/medias/nmedia/18/82/96/91/20085347.jpg",
+    "fecha": "2000-11-08",
+    "nombre": "El Grinch",
+    "tipo":"pelicula"
+  },
+  {
+    "id":"5",
+    "genero":"Acción/Ciencia ficción",
+    "duracion":"1h 55m",
+    "descripcion":"La nueva y épica película profundizará en las historias de estos titanes, sus orígenes y los misterios de Isla Calavera y más allá, mientras descubre la batalla mítica que ayudó a forjar a estos seres extraordinarios y los unió a la humanidad para siempre.",
+    "imagen": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRKLRLdGd3OFUW7ChK230Yz5bhps8_-y9czgHs47P4wciBZVIx5",
+    "fecha": "2024-03-28",
+    "nombre": "Godzilla y Kong: El nuevo imperio",
+    "tipo":"pelicula"
+  }
+]

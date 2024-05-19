@@ -1,0 +1,52 @@
+[
+  {
+    "id":"6",
+    "genero":"fantástico y la comedia negra",
+    "duracion":"13 episodios",
+    "descripcion":"American Horror Story: Coven seguirá a un grupo de brujas de Nueva Orleans. Han pasado 300 años desde los famosos juicios de Salem, pero una pequeña escuela liderada por Fiona (Jessica Lange, 'Todos los días de mi vida') enseña a las brujas más jóvenes cómo protegerse cuando vuelven a estar en peligro.",
+    "imagen": "https://m.media-amazon.com/images/I/91QYEQydt3L._SL1500_.jpg",
+    "fecha": "2013-10-13",
+    "nombre": "American Horror Story: Coven",
+    "tipo":"serie"
+  },
+  {
+    "id":"7",
+    "genero":"fantástico y la comedia negra",
+    "duracion":"10 episodios",
+    "descripcion":"Apolcalypse narra la historia de dos adolescentes con ADN especial, alejados de sus familias y enviados a vivir a un búnker, donde todas las personas están divididas entre púrpuras y grises. Uno de estos grupos, viven de lujos, mientras que el otro, hacen el trabajo duro; todos bajo la dirección de la Srta.",
+    "imagen": "https://hips.hearstapps.com/hmg-prod/images/american-horror-story-apocalypse-poster-1533711391.jpg",
+    "fecha": "2018-07-12",
+    "nombre": "American Horror Story: Apocalypse",
+    "tipo":"serie"
+  },
+  {
+    "id":"8",
+    "genero":"Fantástico y la comedia negra",
+    "duracion":"9 espisodios",
+    "descripcion":"La serie ocurre en las afueras de Los Ángeles en el año 1984. Un grupo de jóvenes deciden ser voluntarios en un campamento de verano. Dicho lugar ha reabierto sus puertas después de haber sido escenario de una masacre hace muchos años, a manos de quien es el principal asesino, “Mr. Jingles”",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStIdXCurPlKBvGHkDelNOSFwcl8KA2R785pKZG7gkb4g&sS",
+    "fecha": "2019-09-18",
+    "nombre": "American Horror Story: 1984",
+    "tipo":"serie"
+  },
+  {
+    "id":"9",
+    "genero":"Fantástico y la comedia negra",
+    "duracion":"11 espisodios",
+    "descripcion":"American Horror Story fue creada por los co productores de Glee, pero los programas tienen poco en común, a parte de eso. El programa se enfoca en los Harmon, una familia de tres que se muda de Boston a Los Ángeles con el fin de superar los incidentes de su pasado",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BJvM0YZpQTjhYwpCstzRk5KlRitNAtq9jmGpoTEaWA&s",
+    "fecha": "2011-03-05",
+    "nombre": "American Horror Story: Cult",
+    "tipo":"serie"
+  },
+  {
+    "id":"10",
+    "genero":"Fantástico y la comedia negra",
+    "duracion":"2 Temporadas",
+    "descripcion":"American Horror Story: Delicate es la duodécima temporada de la serie de televisión de antología de terror de FX, American Horror Story,",
+    "imagen": "https://upload.wikimedia.org/wikipedia/en/0/07/American_Horror_Story_Season_12.jpg",
+    "fecha": "2023-07-20",
+    "nombre": "American Horror Story: Delicate",
+    "tipo":"serie"
+  }
+]

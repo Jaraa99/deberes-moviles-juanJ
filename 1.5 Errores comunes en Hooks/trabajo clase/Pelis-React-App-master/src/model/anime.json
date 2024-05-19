@@ -1,0 +1,52 @@
+[
+  {
+    "id":"11",
+    "genero":"shonnen",
+    "duracion":"2 Temporadas",
+    "descripcion":"La caída de un meteorito deja piedras misteriosas para ser descubiertas por tres amigos en el bosque. Las antiguas tablillas otorgan a los niños el poder de convocar a compañeros dinosaurios y formar el equipo D. El villano Alfa Gang quiere el control de las reliquias, pero el equipo D siempre está trabajando para salir adelante..",
+    "imagen": "https://lh3.googleusercontent.com/proxy/slXcB4ixnTivbXofgUn1RZZ_FXEM_27nQGNey2B6fIVtB8cOOmHRz_ibjCuJSdVnLNSDDg9ftEUAoQ4fQBv8wOO4fz38uQ7iA_5QPyxHwKEj_JlZZdgtazoOYbhngW7mihs",
+    "fecha": "2007-10-10",
+    "nombre": "Dino Rey",
+    "tipo":"anime"
+  },
+  {
+    "id":"12",
+    "genero":"shonnen",
+    "duracion":"2 Temporadas",
+    "descripcion":"Dan y sus amigos se juntan parar luchar en una batalla entre el bien y el mal en un universo paralelo y a medida que aprenden sobre unas misteriosas tarjetas, descubren más sobre la lucha de poder en el universo alternativo de Nueva Vestroia",
+    "imagen": "https://es.web.img3.acsta.net/c_310_420/medias/nmedia/18/68/73/37/18857868.jpg",
+    "fecha": "2007-08-15",
+    "nombre": "Bakugan",
+    "tipo":"anime"
+  },
+  {
+    "id":"13",
+    "genero":"shonnen",
+    "duracion":"170",
+    "descripcion":"El dios de la Destrucción ha despertado, y se está dedicando a aniquilar planetas y acaba de descubrir la Tierra. Cuando lo descubre, el guerrero Goku pide ayuda de sus amigos para convertirse en un legendario Super Saiyajin y poder derrotarlo.",
+    "imagen": "https://img1.ak.crunchyroll.com/i/spire2/ab001b1cb053ec0d7b1b47b0f7bf98e71647329181_main.jpg",
+    "fecha": "1990-01-12",
+    "nombre": "Dragon Ball Z",
+    "tipo":"anime"
+  },
+  {
+    "id":"14",
+    "genero":"shonnen",
+    "duracion":"170",
+    "descripcion":"Naruto es una serie de manga escrita e ilustrada por Masashi Kishimoto, posteriormente adaptada a una serie de anime",
+    "imagen": "https://images.justwatch.com/poster/8603866/s718/naruto-shippuden.%7Bformat%7D",
+    "fecha": "2000-04-23",
+    "nombre": "Naruto Shippuden",
+    "tipo":"anime"
+  },
+  {
+    "id":"15",
+    "genero":"shonnen",
+    "duracion":"25 temporadas",
+    "descripcion":"Ash, Brock y Misty continúan su viaje por la zona de Hoenn, aprendiendo las habilidades que necesitan para convertirse en entrenadores Pokémon.",
+    "imagen": "https://cdn.alfabetajuega.com/alfabetajuega/2021/07/Pokemon-Anime.jpg",
+    "fecha": "1997-03-01",
+    "nombre": "Pokémon",
+    "tipo":"anime"
+  }
+]
