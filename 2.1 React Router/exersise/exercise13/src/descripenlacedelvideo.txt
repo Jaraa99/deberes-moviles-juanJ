@@ -1,0 +1,66 @@
+Clase Matrix
+La clase Matrix es una representación de una matriz en JavaScript. Aquí hay algunas cosas clave sobre esta clase:
+
+Constructor: Recibe un string s como parámetro, que representa la matriz en forma de texto. El constructor inicializa dos propiedades privadas _rows y _columns. Divide el string s en filas y luego cada fila en números para construir la matriz.
+
+
+constructor(s: string) {
+  this._rows = s.split('\n').map(row => row.split(' ').map(Number))
+  this._columns = this._rows[0].map((_, i) => this._rows.map(row => row[i]))
+}
+Métodos rows y columns: Estos son métodos de acceso (getters) que devuelven las filas y columnas de la matriz respectivamente. Devuelven copias de las matrices internas _rows y _columns.
+
+
+get rows(): number[][] {
+  return this._rows
+}
+
+get columns(): number[][] {
+  return this._columns
+}
+Componente MatrixComponent
+El componente MatrixComponent es un componente React funcional que permite al usuario ingresar una cadena de texto representando una matriz. Al hacer clic en un botón, se genera una instancia de la clase Matrix con la cadena ingresada y se muestran las filas y columnas de la matriz.
+
+Aquí están los puntos clave de este componente:
+
+useState: Utiliza el hook useState de React para mantener el estado del string de la matriz y la instancia de la clase Matrix.
+
+
+const [matrixString, setMatrixString] = useState<string>('1 2 3\n4 5 6\n7 8 9');
+const [matrix, setMatrix] = useState<Matrix | null>(null);
+handleChange: Una función que se ejecuta cuando cambia el valor del textarea donde se introduce la matriz. Actualiza el estado matrixString con el nuevo valor.
+
+
+const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  setMatrixString(event.target.value);
+};
+handleClick: Una función que se ejecuta cuando se hace clic en el botón "Generar Matriz". Crea una nueva instancia de la clase Matrix con la cadena de matriz ingresada y actualiza el estado matrix.
+
+
+const handleClick = () => {
+  const newMatrix = new Matrix(matrixString);
+  setMatrix(newMatrix);
+};
+Renderizado condicional: Muestra el textarea para ingresar la matriz, un botón para generar la matriz y, si se ha generado una matriz, muestra las filas y columnas de la matriz.
+
+return (
+  <div>
+    <textarea value={matrixString} onChange={handleChange} rows={4} cols={20} />
+    <button onClick={handleClick}>Generar Matriz</button>
+    {matrix && (
+      <div>
+        <h3>Filas:</h3>
+        <pre>{JSON.stringify(matrix.rows, null, 2)}</pre>
+        <h3>Columnas:</h3>
+        <pre>{JSON.stringify(matrix.columns, null, 2)}</pre>
+      </div>
+    )}
+  </div>
+);
+Resumen
+El componente MatrixComponent interactúa con la clase Matrix para permitir al usuario ingresar una matriz y ver sus filas y columnas en la interfaz de usuario. Es una aplicación simple pero efectiva para demostrar el uso de clases y componentes en una aplicación React.
+
+
+ENLACE DEL VIDEO
+
+https://www.youtube.com/watch?v=SUi9zuVT7A4

@@ -1,0 +1,72 @@
+Claro, aquí tienes una explicación detallada de cada línea del código:
+
+
+import React, { useState } from 'react';
+Esta línea importa React y el hook useState desde la biblioteca de React. useState se utiliza para manejar el estado dentro de un componente funcional.
+
+
+const answers = ["Whatever.", "Sure.", "Whoa, chill out!", "Calm down, I know what I'm doing!"];
+Define un arreglo de posibles respuestas que el bot puede dar, dependiendo de la entrada del usuario.
+
+
+const hey = (message: string) => {
+    const speech = message.trim();
+    if (speech === "") return "Fine. Be that way!";
+Declara una función llamada hey que toma un mensaje como argumento y devuelve una respuesta basada en ciertas condiciones. Primero, elimina los espacios en blanco al inicio y al final de message. Si speech está vacío, devuelve "Fine. Be that way!".
+
+
+    const isQuestion = speech.endsWith("?") ? 1 : 0;
+    const isYelling = /[A-Z]+/.test(speech) && speech === speech.toUpperCase() ? 2 : 0;
+Verifica si el mensaje es una pregunta (termina con ?) y asigna 1 si es cierto, de lo contrario 0. También verifica si el mensaje está en mayúsculas y contiene al menos una letra mayúscula, asignando 2 si es cierto, de lo contrario 0.
+
+
+    return answers[isQuestion + isYelling];
+};
+Devuelve una respuesta del arreglo answers basado en la suma de isQuestion e isYelling.
+
+
+const App = () => {
+    const [message, setMessage] = useState("");
+    const [response, setResponse] = useState("");
+Define el componente funcional App. Usa useState para crear dos estados: message para almacenar el mensaje del usuario y response para almacenar la respuesta del bot.
+
+
+    const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setMessage(e.target.value);
+    };
+Define una función handleInputChange que se llama cada vez que cambia el valor del input. Actualiza el estado message con el nuevo valor del input.
+
+
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        setResponse(hey(message));
+    };
+Define una función handleSubmit que se llama cuando el formulario se envía. Previene el comportamiento por defecto del formulario y actualiza el estado response con el resultado de la función hey.
+
+
+    return (
+        <div>
+            <h1>Hey Bot</h1>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={message}
+                    onChange={handleInputChange}
+                    placeholder="Type your message here"
+                />
+                <button type="submit">Submit</button>
+            </form>
+            {response && <p>{response}</p>}
+        </div>
+    );
+};
+Renderiza el componente App. Contiene un título Hey Bot, un formulario con un input y un botón de envío. El input se vincula al estado message y llama a handleInputChange al cambiar. El formulario llama a handleSubmit al enviar. Si response tiene un valor, se muestra dentro de un párrafo <p>.
+
+
+export default App;
+Exporta el componente App como la exportación por defecto del módulo, para que pueda ser importado y utilizado en otras partes de la aplicación.
+
+
+
+ENLACE DEL VIDEO
+https://www.youtube.com/watch?v=SUi9zuVT7A4
